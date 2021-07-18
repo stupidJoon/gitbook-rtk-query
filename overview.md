@@ -98,8 +98,7 @@ export const pokemonApi = createApi({
   }),
 })
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
+// 정의된 엔드포인트에서 자동으로 생성된 훅을 함수형 컴포넌트에서 사용하기 위해 export
 export const { useGetPokemonByNameQuery } = pokemonApi
 ```
 
@@ -109,7 +108,7 @@ export const { useGetPokemonByNameQuery } = pokemonApi
 
 ```javascript
 import { configureStore } from '@reduxjs/toolkit'
-// 또는 from '@reduxjs/toolkit/query/react'
+// Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { pokemonApi } from './services/pokemon'
 
@@ -118,9 +117,7 @@ export const store = configureStore({
     // 특정 top-level slice에서 생성된 리듀서를 추가
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
-  // 캐싱, 요청 취소, 폴링 등등 유용한 rtk-query의 기능들을 위한 api 미들웨어 추
+  // 캐싱, 요청 취소, 폴링 등등 유용한 rtk-query의 기능들을 위한 api 미들웨어 추가
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware),
 })
