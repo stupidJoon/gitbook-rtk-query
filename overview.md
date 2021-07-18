@@ -141,7 +141,7 @@ export default function App() {
   // 각각의 hooks은 생성된 엔드포인트에서도 접근 가능함
   // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
   
-  // 데이터와 로딩 상태에 따라 UI를 렌더
+  // 데이터와 로딩 상태에 따라 UI를 렌더링
 }
 ```
 
