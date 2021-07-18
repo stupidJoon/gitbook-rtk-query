@@ -6,7 +6,7 @@
 
 번역 페이지 진행 체크리스트
 
-* [ ] RTK Query 시작하기
+* [ ] RTK Query Quick Start
 * [x] RTK Query 개요
 * [ ] Comparison with Other Tools
 * [ ] Usage With Typescript

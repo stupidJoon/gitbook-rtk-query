@@ -1,10 +1,14 @@
 # RTK Query 개요
 
-> 💡 **배우게 될 것들**
->
-> * RTK Query가 무엇이고 어떤 문제를 해결해 주는지
-> * RTK Query에 포함되어있는 API들
-> * 기본 RTK Query 사용법
+{% hint style="success" %}
+**배우게 될 것들**
+
+* RTK Query가 무엇이고 어떤 문제를 해결해 주는지
+* RTK Query에 포함되어있는 API들
+* 기본 RTK Query 사용법
+{% endhint %}
+
+
 
 **RTK Query**는 강력한 data fetching, caching 툴입니다. 웹 애플리케이션에서 데이터를 가져오는 단순한 상황을 간단하게 만들어서 **data fetching과 caching 로직을 스스로 작성할 필요가 없도록 만들어졌습니다.**
 
