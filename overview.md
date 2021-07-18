@@ -39,7 +39,7 @@ RTK Query는 Apollo Client, React Query, Urql, SWR과 같은 데이터 패칭을
 
 RTK Query는 Redux Toolkit 패키지에 포함되어있습니다. 아래의 두 가지 코드로부터 시작할 수 있습니다.
 
-```javascript
+```typescript
 import { createApi } from '@reduxjs/toolkit/query'
 
 /* React-specific entry point that automatically generates
@@ -73,7 +73,7 @@ RTK Query의 번들 사이즈는 직접 작성한 데이터 패칭 로직을 제
 
 RTK Query는 Redux Toolkit 패키지에 포함되어있습니다. 아래의 두 가지 코드로부터 시작할 수 있습니다.
 
-```javascript
+```typescript
 import { createApi } from '@reduxjs/toolkit/query'
 
 /* React-specific entry point that automatically generates
@@ -83,7 +83,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 
 React에서 전형적인 사용법은 `createApi`를 import하고 서버의 베이스 URL과 우리가 접근하고 싶은 엔드포인트들의 리스트들인 "API slice"를 정의하는 것에서부터 시작합니다.
 
-```javascript
+```typescript
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Pokemon } from './types'
 
@@ -106,7 +106,7 @@ export const { useGetPokemonByNameQuery } = pokemonApi
 
 또한 "API slice"는 자동으로 생성된 Redux slice 리듀서와 커스텀 미들웨어를 포함합니다. 둘 다 리덕스 스토어에 추가되어야 합니다:
 
-```javascript
+```typescript
 import { configureStore } from '@reduxjs/toolkit'
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from '@reduxjs/toolkit/query'
@@ -131,7 +131,7 @@ setupListeners(store.dispatch)
 
 API slice에서 자동 생성된 리액트 hooks를 import하고 필요한 파라미터와 함께 컴포넌트에서 hooks를 호출합니다. RTK Query는 자동으로 컴포넌트가 마운트될때 데이터를 패치하고, 파라미터가 바뀔 때 다시 패치를 해서 `{data, isFetching}` 값들을 제공하고 컴포넌트를 리렌더합니다.
 
-```javascript
+```typescript
 import * as React from 'react'
 import { useGetPokemonByNameQuery } from './services/pokemon'
 
