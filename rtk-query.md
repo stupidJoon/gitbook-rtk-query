@@ -36,11 +36,11 @@ RTK Query가 어떻게 작동하는지 보기위해, 기본적인 사용 예시�
 {% tab title="TypeScript" %}
 {% code title="src/services/pokemon.ts" %}
 ```typescript
-// Need to use the React-specific entry point to import createApi
+// createApi를 import하기위해 React 엔트리 포인트 사용
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Pokemon } from './types'
 
-// Define a service using a base URL and expected endpoints
+// base URL과 엔드포인트들로 서비스 정의
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
@@ -51,8 +51,7 @@ export const pokemonApi = createApi({
   }),
 })
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
+// 정의된 엔드포인트에서 자동으로 생성된 훅을 함수형 컴포넌트에서 사용하기 위해 export
 export const { useGetPokemonByNameQuery } = pokemonApi
 ```
 {% endcode %}
@@ -108,17 +107,16 @@ import { pokemonApi } from './services/pokemon'
 
 export const store = configureStore({
   reducer: {
-    // Add the generated reducer as a specific top-level slice
+    // 특정 top-level slice에서 생성된 리듀서를 추가
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
+  // 캐싱, 요청 취소, 폴링 등등 유용한 rtk-query의 기능들을 위한 api 미들웨어 추가
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pokemonApi.middleware),
 })
 
-// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
-// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+// 옵셔널, refetchOnFocus/refetchOnReconnect 기능을 위해 필요함
+// setupListeners 문서를 참고 - 커스텀을 위한 옵셔널 콜백을 2번째 인자로 받음
 setupListeners(store.dispatch)
 ```
 {% endcode %}
@@ -211,9 +209,9 @@ import * as React from 'react'
 import { useGetPokemonByNameQuery } from './services/pokemon'
 
 export default function App() {
-  // Using a query hook automatically fetches data and returns query values
+  // 자동으로 데이터를 패치하고 쿼리 값을 가져오는 쿼리 hook을 사용
   const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
-  // Individual hooks are also accessible under the generated endpoints:
+  // 각각의 hooks은 생성된 엔드포인트에서도 접근 가능함
   // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
 
   return (
