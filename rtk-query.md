@@ -271,7 +271,7 @@ export default function App() {
 
 #### 기본 예시
 
-{% embed url="https://codesandbox.io/embed/github/reduxjs/redux-toolkit/tree/master/examples/query/react/basic?fontsize=14&hidenavigation=1&theme=dark" %}
+{% embed url="https://codesandbox.io/embed/github/reduxjs/redux-toolkit/tree/master/examples/query/react/basic?autoresize=1&fontsize=12&theme=dark" %}
 
 흥미롭네요... 하지만 만약 여러개의 포켓몬을 한번에 보여주고 싶거나 여러개의 컴포넌트들이 같은 포켓몬을 불러오면 어쩌죠?
 
