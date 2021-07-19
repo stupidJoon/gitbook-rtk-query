@@ -8,7 +8,7 @@
 
 * [x] RTK Query 시작하기
 * [x] RTK Query 개요
-* [ ] Comparison with Other Tools
+* [ ] 다른 라이브러리들과 비교
 * [ ] Usage With Typescript
 * [ ] Using RTK Query
   * [ ] Queries
