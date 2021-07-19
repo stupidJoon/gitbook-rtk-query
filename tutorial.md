@@ -82,7 +82,7 @@ export const { useGetPokemonByNameQuery } = pokemonApi
 {% endtab %}
 {% endtabs %}
 
-RTK Query를 사용할때, 전체 API를 보통 한곳에 정의합니다. 이 점은 `swr`이나 `react-query`같은 라이브러리들과 가장 많이 다른 점일 것인데, 여기에는 여러가지 이유들이 있습니다. 저희의 관점에서는 여러개의 커스텀 hooks들이 다른 파일들에 있는 것 보다 하나의 중심에 위치하는게 요청 관찰, 캐시 무효화, 설정에서 훨씬 쉽다고 생각합니다. 
+RTK Query를 사용할때, 전체 API를 보통 한곳에 정의합니다. 이 점은 `swr`이나 `react-query`같은 라이브러리들과 가장 많이 다른 점일 것인데, 여기에는 여러가지 이유들이 있습니다. 저희의 관점에서는 여러개의 커스텀 hooks들이 다른 파일들에 있는 것 보다 한곳에 위치하는게 요청 관찰, 캐시 무효화, 설정에서 훨씬 쉽다고 생각합니다. 
 
 {% hint style="success" %}
 **팁**
