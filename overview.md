@@ -14,7 +14,7 @@
 
 RTK Query는 **Redux Toolkit 패키지에 포함된 선택적인 추가기능이며** Redux Toolkit에 있는 다른 API와 같이 제공됩니다.
 
-## 동기
+## 동기 <a id="motivation"></a>
 
 웹에서 데이터를 보여주려면 일반적으로 서버에서 데이터를 가져와야 합니다. 또한 해당 데이터를 업데이트하고, 그 업데이트 내용을 서버에 보내고, 클라이언트에 캐시 된 데이터를 서버와 동기화를 유지해야 합니다. 이는 오늘날의 애플리케이션에서 사용되는 다른 동작들을 구현해야 하기 때문에 더욱 복잡해집니다.
 
@@ -37,7 +37,7 @@ RTK Query는 Apollo Client, React Query, Urql, SWR과 같은 데이터 패칭을
 * 우리는 OpenAPI와 GraphQL 스키마 API 슬라이스 코드 예시를 제공합니다.
 * 마지막으로, RTK Query는 완전히 타입스크립트로 작성되었으며, 완벽한 타입스크립트 경험을 제공합니다. 
 
-## 포함된 항목 
+## 포함된 항목  <a id="whats-included"></a>
 
 ### APIs
 
@@ -58,7 +58,7 @@ RTK Query는 이러한 API들을 포함합니다:
 * [`<ApiProvider />`](https://redux-toolkit.js.org/rtk-query/api/ApiProvider): **Redux 스토어를 가지고 있지 않다면** `Provider`로 사용 가능합니다.
 * [`setupListeners()`](https://redux-toolkit.js.org/rtk-query/api/setupListeners): `refetchOnMount`와 `refetchOnReconnect`기능을 위해 사용되는 유틸리티입니다.
 
-### 번들 사이즈
+### 번들 사이즈 <a id="bundle-size"></a>
 
 RTK Query는 고정된 크기를 앱의 번들 사이즈에 추가합니다. RTK Query가 Redux Toolkit과 React-Redux위에서 빌드하기 때문에 얼마나 그것들을 이용하고 있는지에 따라서 사이즈가 달라집니다. 예상되는 min+gzip 번들 사이즈는:
 
@@ -71,9 +71,9 @@ RTK Query는 고정된 크기를 앱의 번들 사이즈에 추가합니다. RTK
 
 RTK Query의 번들 사이즈는 직접 작성한 데이터 패칭 로직을 제거하면 대부분의 애플리케이션의 사이즈가 개선됩니다.
 
-## 기본 사용법
+## 기본 사용법 <a id="basic-usage"></a>
 
-### API Slice를 생성하기
+### API Slice를 생성하기 <a id="create-an-api-slice"></a>
 
 RTK Query는 Redux Toolkit 패키지에 포함되어있습니다. 아래의 두 가지 코드로부터 시작할 수 있습니다.
 
@@ -106,7 +106,7 @@ export const pokemonApi = createApi({
 export const { useGetPokemonByNameQuery } = pokemonApi
 ```
 
-### Store 설정하기
+### Store 설정하기 <a id="configure-the-store"></a>
 
 또한 "API slice"는 자동으로 생성된 Redux slice 리듀서와 커스텀 미들웨어를 포함합니다. 둘 다 리덕스 스토어에 추가되어야 합니다:
 
@@ -131,7 +131,7 @@ export const store = configureStore({
 setupListeners(store.dispatch)
 ```
 
-### 컴포넌트에서 Hooks 사용하기
+### 컴포넌트에서 Hooks 사용하기 <a id="use-hooks-in-components"></a>
 
 API slice에서 자동 생성된 리액트 hooks를 import하고 필요한 파라미터와 함께 컴포넌트에서 hooks를 호출합니다. RTK Query는 자동으로 컴포넌트가 마운트될때 데이터를 패치하고, 파라미터가 바뀔 때 다시 패치를 해서 `{data, isFetching}` 값들을 제공하고 컴포넌트를 리렌더합니다.
 
@@ -149,7 +149,7 @@ export default function App() {
 }
 ```
 
-## 추가 정보
+## 추가 정보 <a id="further-information"></a>
 
 \*\*\*\*[**RTK Query 빠른 시작 튜토리얼**](https://redux-toolkit.js.org/tutorials/rtk-query/)에서 어떻게 RTK Query를 Redux Toolkit을 사용하는 프로젝트에서 추가하고, "API slice"를 엔드포인트 정의와 함깨 설정하고, 어떻게 자동으로 생성된 리액트 hooks를 컴퍼트에서 사용하는지 예제와 함께 설명합니다.
 

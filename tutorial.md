@@ -24,11 +24,11 @@ RTK Query는 `@reduxjs/toolkit` 패키지의 추가적인 애드온으로 포함
 
 이 튜토리얼에서 우리는 React와 Redux Toolkit을 사용하는 걸 가정하지만, 다른 UI layers들과도 사용할 수 있습니다. 예시들은 애플리케이션 코드가 `src` 폴더에 있는 [전형적인 Create-React-App 폴더 구조](https://create-react-app.dev/docs/folder-structure)를 기반으로 하지만, 패턴들은 대부분의 사용하는 프로젝트나 폴더 구조에 적용할 수 있습니다.
 
-## 스토어와 API 서비스 설정하기
+## 스토어와 API 서비스 설정하기 <a id="setting-up-your-store-and-api-service"></a>
 
 RTK Query가 어떻게 작동하는지 보기위해, 기본적인 사용 예시를 만들어 보겠습니다. 이 예시에서는 React를 사용하고 RTK Query에서 자동 생성된 리액트 hooks를 사용하는 것을 가정하겠습니다. 
 
-### API 서비스 생성하기
+### API 서비스 생성하기 <a id="create-an-api-service"></a>
 
 첫째로, 공개 API인 [PokeAPI](https://pokeapi.co/)를 이용해서 서비스 정의를 생성하겠습니다.
 
@@ -92,7 +92,7 @@ RTK Query를 사용할때, 전체 API를 보통 한곳에 정의합니다. 이 �
 유지보수적 관점에서, 하나의 API 슬라이스에 엔드포인트들을 포함하면서 엔드포인트들을 여러개의 파일에 나누어 정의하고 싶을 수도 있습니다. [코드 스플리팅](https://redux-toolkit.js.org/rtk-query/usage/code-splitting)에서 어떻게 `injectEndpoints` 프로퍼티를 사용해서 여러 파일들에서 하나의 API 슬라이스로 API 엔드포인트를 주입할 수 있는지 알아보세요.
 {% endhint %}
 
-### 스토어에 서비스 추가하기
+### 스토어에 서비스 추가하기 <a id="add-the-service-to-your-store"></a>
 
 RTK Query는 리덕스 루트 리듀서에 추가해야하는 "슬라이스 리듀서"와 데이터 패칭을 위한 커스텀 미들웨어를 생성합니다. 둘 다 리덕스 스토어에 추가해야 합니다. 
 
@@ -149,7 +149,7 @@ setupListeners(store.dispatch)
 {% endtab %}
 {% endtabs %}
 
-### 애플리케이션을 Provider로 감싸기
+### 애플리케이션을 Provider로 감싸기 <a id="wrap-your-application-with-the-provider"></a>
 
 만약 애플리케이션을 Provider로 감싸지 않았다면, 리액트 애플리케이션 컴퍼넌트를 감싸는 리덕스 스토어의 표준 패턴을 사용하세요:
 
@@ -197,7 +197,7 @@ render(
 {% endtab %}
 {% endtabs %}
 
-## 컴포넌트에서 쿼리 사용하기
+## 컴포넌트에서 쿼리 사용하기 <a id="use-the-query-in-a-component"></a>
 
 서비스를 정의하고, hooks를 import해서 요청을 생성할 수 있습니다.
 

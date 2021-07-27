@@ -4,7 +4,7 @@
 
 저희는 위의 라이브러리들이 모두 우수하다고 생각합니다. 만약 그중 하나를 사용중이다면, 개발자가 겪는 여러 문제들을 해결할 수 있게 도와준다고 생각합니다. 이 페이지 정보들의 목적은 **기능, 구현, 접근, API 디자인들에서 어떤 차이점**이 있는지 알려주는 것 입니다. 이 페이지의 목표는 X가 Y보다 좋다고 주장하기 보다는 **정보에 입각해서 결정을 돕고 장단점들을 이해하는 것 입니다.** 
 
-## 언제 RTK Query를 사용해야 하나요?
+## 언제 RTK Query를 사용해야 하나요? <a id="when-should-you-use-rtk-query"></a>
 
 보통 RTK Query를 사용하는 이유들로는:
 
@@ -13,7 +13,7 @@
 * Redux 생태계에 RTK Query 기능을 통합시키고싶어서
 * 애플리케이션 로직이 React밖에서 동작해야해서
 
-### 특별한 기능들
+### 특별한 기능들 <a id="unique-capabilities"></a>
 
 RTK Query는 고려할 가치가 있는 몇몇의 특별한 API 디자인 측면들과 기능들을 가지고 있습니다.
 
@@ -27,7 +27,7 @@ RTK Query는 고려할 가치가 있는 몇몇의 특별한 API 디자인 측면
 
 ## Tradeoffs
 
-### 캐시 정규화, 중복제거 미지원
+### 캐시 정규화, 중복제거 미지원 <a id="no-normalized-or-deduplicated-cache"></a>
 
 RTK Query는 **여러 요청에서 동일한 항목에 대한 캐시 중복제거를 의도적으로 구현하지 않았습니다.** 그 이유로는 여러가지가 있는데: 
 
@@ -36,7 +36,7 @@ RTK Query는 **여러 요청에서 동일한 항목에 대한 캐시 중복제�
 * 많은 상황에서 간단하게 데이터를 다시 패칭하는게 유효하지 않은 작업을 해결하는 쉽고 간단한 방법입니다. 
 * 최소한 RTK Query는 여러 사람들의 힘든 부분인 "데이터 패칭"같은 일반적인 사례를 해결하는 데 도움을 줄 수 있습니다. 
 
-### 번들 사이즈
+### 번들 사이즈 <a id="bundle-size"></a>
 
 RTK Query는 고정된 번들 사이즈를 앱에 추가합니다. RTK Query가 Redux Toolkit과 React-Redux 위에서 동작하기 때문에 추가된 크기는 얼마나 그것들을 사용하고 있는지에 따라서 달라집니다. 예상되는 min+gzip 번들 사이즈는: 
 
@@ -49,7 +49,7 @@ RTK Query는 고정된 번들 사이즈를 앱에 추가합니다. RTK Query가 
 
 RTK Query의 번들 사이즈는 직접 작성한 데이터 패칭 로직을 제거하면 대부분의 애플리케이션의 사이즈가 의미있게 개선됩니다.
 
-## 기능들 비교하기
+## 기능들 비교하기 <a id="comparing-feature-sets"></a>
 
 다른 라이브러리들을 비교해서 기능의 공통점과 차이점을 파악할 수 있습니다.
 
@@ -79,7 +79,7 @@ RTK Query의 번들 사이즈는 직접 작성한 데이터 패칭 로직을 제
 | **Manual cache manipulation** | yes | yes | yes | yes |
 | **Platforms** | hooks for React, everywhere Redux works | hooks for React | various | various |
 
-## 추가 정보
+## 추가 정보 <a id="further-information"></a>
 
 * [React Query "Comparison" 페이지](https://react-query.tanstack.com/comparison)는 추가적인 세부 기능 비교 표와 기능에 대한 설명이 있습니다. 
 * Urql 메인테이너인 Phil Pluckthun의 ["normalized cache"가 무엇이고 Urql의 캐시가 어떻게 작동하는지 완벽한 설명](https://kitten.sh/graphql-normalized-caching)을 작성했습니다. 
