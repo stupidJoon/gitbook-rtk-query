@@ -6,7 +6,7 @@
 * 타입스크립트와 함께 다양한 RTK Query API를 사용하는 방법
 {% endhint %}
 
-## 소개
+## 소개 <a id="introduction"></a>
 
 RTK Query는 Redux Toolkit 패키지의 나머지 부분과 마찬가지로 타입스크립트로 작성됐으며 API는 타입스크립트 애플리케이션에서 원활하게 사용할 수 있도록 설계되었습니다. 
 
@@ -22,7 +22,7 @@ RTK Query는 Redux Toolkit 패키지의 나머지 부분과 마찬가지로 타�
 
 ## `createApi`
 
-### auto-generated 리액트 Hooks 사용하기
+### auto-generated 리액트 Hooks 사용하기 <a id="using-auto-generated-react-hooks"></a>
 
 리액트에서 RTK Query는 쿼리와 엔드포인트들을 위해 각각의 query와 mutation [`endpoints`](https://redux-toolkit.js.org/rtk-query/api/createApi#endpoints)에서 자동으로 생성되는 리액트 hooks인 [`createApi`](https://redux-toolkit.js.org/rtk-query/api/createApi)를 exports하는것에서부터 시작됩니다. 
 
@@ -99,7 +99,7 @@ const useGetPokemonByNameQuery = pokemonApi.endpoints.getPokemonByName.useQuery
 {% endtab %}
 {% endtabs %}
 
-### `baseQuery` 작성하기
+### `baseQuery` 작성하기 <a id="typing-a-basequery"></a>
 
 RTK Query에서 `BaseQueryFn` 타입을 export하면 커스텀 [`baseQuery`](https://redux-toolkit.js.org/rtk-query/api/createApi#basequery)를 작성할 수 있습니다. 
 
@@ -245,7 +245,7 @@ const api = createApi({
 {% endtab %}
 {% endtabs %}
 
-### query와 mutation `endpoints` 작성하기
+### query와 mutation `endpoints` 작성하기 <a id="typing-query-and-mutation-endpoints"></a>
 
 `endpoints`는 builder syntax를 이용해서 정의된 오브젝트입니다. `query`와 `mutation` endpoints는 제너릭 포맷인 `<ResultType, QueryArg>`으로 타입을 제공할 수 있습니다. 
 
@@ -337,7 +337,7 @@ const api = createApi({
 `queries`와 `mutations`은 위의 방식대신 `baseQuery`를 통해 반환 타입을 정의할 수 있습니다. 그러나 모든 query와 mutation들이 같은 타입을 반환하지 않는 한 `baseQuery`의 반환 타입을 `unkown`으로 두는 것을 추천합니다. 
 {% endhint %}
 
-### `queryFn` 작성하기
+### `queryFn` 작성하기 <a id="typing-a-queryfn"></a>
 
 [query와 mutation endpoints 작성하기](https://redux-toolkit.js.org/rtk-query/usage-with-typescript#typing-query-and-mutation-endpoints)에서 설명한 것 처럼 `queryFn`은 해당 endpoint의 제너릭으로 결과와 매개변수 타입들을 받습니다. 
 
@@ -580,7 +580,7 @@ const api = createApi({
 {% endtab %}
 {% endtabs %}
 
-### `providesTags`/`invalidatesTags` 작성하기
+### `providesTags`/`invalidatesTags` 작성하기 <a id="typing-providestagsinvalidatestags"></a>
 
 RTK Query는 만료된 데이터를 [자동으로 re-fetching](https://redux-toolkit.js.org/rtk-query/usage/automated-refetching)하는 캐시 태그 무효화 시스템을 제공합니다. 
 
