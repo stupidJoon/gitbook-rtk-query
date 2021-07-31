@@ -8,5 +8,5 @@
 
 ## RTK Query 사용하기
 
-* [Queries](rtk-query/queries.md)
+* [쿼리](rtk-query/queries.md)
 
