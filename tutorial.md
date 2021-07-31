@@ -18,7 +18,7 @@ Redux Toolkit Query 튜토리얼에 오신걸 환영합니다! **이 튜토리�
 
 RTK Query는 웹 애플리케이션에서 데이터를 로딩하는 흔한 케이스를 간단하게하는 진보된 데이터 패칭, 캐싱 툴입니다. RTK Query는 Redux Toolkit core의 위에서 작성되었고, RTK의 API들은 [`createSlice`](https://redux-toolkit.js.org/api/createSlice)와 [`createAsyncThunk`](https://redux-toolkit.js.org/api/createAsyncThunk)를 확장해서 만들어졌습니다. 
 
-RTK Query는 `@reduxjs/toolkit` 패키지의 추가적인 애드온으로 포함되어져있습니다. Redux Toolkit을 사용해도 RTK Query Api를 사용하지 않아도 되지만 우리는 RTK Query의 데이터 패칭과 캐싱이 많은 사용자들에게 이득이라고 생각합니다. 
+RTK Query는 `@reduxjs/toolkit` 패키지의 추가적인 애드온으로 포함되어져있습니다. Redux Toolkit을 사용해도 RTK Query Api를 사용하지 않아도 되지만 우리는 RTK Query의 데이터 패칭과 캐싱이 많은 사용자들에게 택을 가져다 줄것이라고 생각합니다
 
 ### How to Read This Tutorial
 
@@ -82,12 +82,12 @@ export const { useGetPokemonByNameQuery } = pokemonApi
 {% endtab %}
 {% endtabs %}
 
-RTK Query를 사용할때, 전체 API를 보통 한곳에 정의합니다. 이 점은 `swr`이나 `react-query`같은 라이브러리들과 가장 많이 다른 점일 것인데, 여기에는 여러가지 이유들이 있습니다. 저희의 관점에서는 여러개의 커스텀 hooks들이 다른 파일들에 있는 것 보다 한곳에 위치하는게 요청 관찰, 캐시 무효화, 설정에서 훨씬 쉽다고 생각합니다. 
+RTK Query를 사용할때, 전체 API를 보통 한곳에 정의합니다. 이 점은 `swr`이나 `react-query`같은 라이브러리들과 가장 많이 다른 점일 것인데, 여기에는 여러가지 이유들이 있습니다. 저희의 관점에서는 여러개의 커스텀 hooks들이 다른 파일들에 있는 것 보다 한곳에 위치하는게 요청, 캐시 무효화, 공통 앱 설정을 관리하기가 더욱 쉽다고 생각합니다.
 
 {% hint style="success" %}
 **팁**
 
-일반적으로, 애플리케이션에 필요한 베이스 URL당 하나의 API 슬라이스를 가져야 합니다. 예시로 만약 사이트에서 `/api/posts`와 `/api/users`에서 데이터를 가져와야 한다면 `/api`를 베이스 URL로 하는 하나의 API 슬라이스를 만들고 `posts`와 `users`로 엔드포인트를 나누어야 합니다. 이러면 endpoints와의 관계를 tag로 정의해서 [자동 데이터 리패칭](https://redux-toolkit.js.org/rtk-query/usage/automated-refetching)이라는 효과적인 장점을 얻을 수 있습니다. 
+일반적으로, 애플리케이션에 필요한 베이스 URL당 하나의 API 슬라이스를 가져야 합니다. 예시로 만약 사이트에서 `/api/posts`와 `/api/users`에서 데이터를 가져와야 한다면 `/api`를 베이스 URL로 하는 하나의 API 슬라이스를 만들고 `posts`와 `users`로 엔드포인트를 나누어야 합니다. 이러면 endpoints와의 관계를 tag로 정의해서 [자동 데이터 리패칭](https://redux-toolkit.js.org/rtk-query/usage/automated-refetching) 기능을 효과적으로 활용할 수 있습니다. 
 
 유지보수적 관점에서, 하나의 API 슬라이스에 엔드포인트들을 포함하면서 엔드포인트들을 여러개의 파일에 나누어 정의하고 싶을 수도 있습니다. [코드 스플리팅](https://redux-toolkit.js.org/rtk-query/usage/code-splitting)에서 어떻게 `injectEndpoints` 프로퍼티를 사용해서 여러 파일들에서 하나의 API 슬라이스로 API 엔드포인트를 주입할 수 있는지 알아보세요.
 {% endhint %}
@@ -155,7 +155,7 @@ setupListeners(store.dispatch)
 
 {% tabs %}
 {% tab title="TypeScript" %}
-{% code title="src/idnex.tsx" %}
+{% code title="src/index.tsx" %}
 ```jsx
 import * as React from 'react'
 import { render } from 'react-dom'
@@ -176,7 +176,7 @@ render(
 {% endtab %}
 
 {% tab title="Javascript" %}
-{% code title="src/store.jsx" %}
+{% code title="src/index.jsx" %}
 ```jsx
 import * as React from 'react'
 import { render } from 'react-dom'
@@ -199,7 +199,7 @@ render(
 
 ## 컴포넌트에서 쿼리 사용하기 <a id="use-the-query-in-a-component"></a>
 
-서비스를 정의하고, hooks를 import해서 요청을 생성할 수 있습니다.
+서비스를 정의하면 hooks를 가져와서 요청을 생성할 수 있습니다.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -265,7 +265,7 @@ export default function App() {
 {% endtab %}
 {% endtabs %}
 
-요청을 생성할 때 여러 방법으로 상태를 추적할 수 있습니다. `data`, `status`, `error`로 알맞는 UI를 렌더링할 수 있습니다. 또한 `useQuery`는 유틸리티 불리언 값인 `isLoading`, `isFetching`, `isSuccess`, `isError`로 가장 최근의 요청에 대한 값을 제공합니다. 
+요청을 생성할 때 여러 방법으로 상태를 추적할 수 있습니다. `data`, `status`, `error`로 알맞는 UI를 렌더링할 수 있습니다. 또한 `useQuery`는 유틸리티 불리언 값인 `isLoading`, `isFetching`, `isSuccess`, `isError` 로 가장 최근의 요청에 대한 값을 제공합니다. 
 
 #### 기본 예시
 
