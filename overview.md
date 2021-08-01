@@ -153,5 +153,5 @@ export default function App() {
 
 \*\*\*\*[**RTK Query 사용 가이드 섹션**](https://redux-toolkit.js.org/rtk-query/usage/queries)에서는 [데이터 쿼링](https://redux-toolkit.js.org/rtk-query/usage/queries), [뮤테이션을 이용해 서버에게 업데이트 보내기](https://redux-toolkit.js.org/rtk-query/usage/mutations), [캐시 업데이트를 스트리밍하기](https://redux-toolkit.js.org/rtk-query/usage/streaming-updates) 같은 토픽을 설명합니다. 
 
-\*\*\*\*[**예시 페이지**](https://redux-toolkit.js.org/rtk-query/usage/examples)에서는 [GraphQL과 함께 쿼리 만들기](https://redux-toolkit.js.org/rtk-query/usage/examples#react-with-graphql), [인증](https://redux-toolkit.js.org/rtk-query/usage/examples#authentication) 그리고 [Svelte같은 다른 UI 라이브러리와 함께 RTK Query를 사용하기](https://redux-toolkit.js.org/rtk-query/usage/examples#svelte) 같은 주제를 보여주는 실행 가능한 CodeSandboxes를 가지고 있습니다.
+\*\*\*\*[**예시 페이지**](https://redux-toolkit.js.org/rtk-query/usage/examples)에서는 [GraphQL과 함께 쿼리 만들기](https://redux-toolkit.js.org/rtk-query/usage/examples#react-with-graphql), [인증](https://redux-toolkit.js.org/rtk-query/usage/examples#authentication) 그리고 [Svelte같은 다른 UI 라이브러리와 함께 RTK Query를 사용하기](https://redux-toolkit.js.org/rtk-query/usage/examples#svelte) 같은 주제를 보여주는 실행 가능한 CodeSandbox를 가지고 있습니다.
 
