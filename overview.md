@@ -10,7 +10,7 @@
 
 
 
-**RTK Query**는 강력한 data fetching, caching 툴입니다. 웹 애플리케이션에서 데이터를 가져오는 단순한 상황을 간단하게 만들어서 **data fetching과 caching 로직을 스스로 작성할 필요가 없도록 만들어졌습니다.**
+**RTK Query**는 강력한 데이터 패칭, 캐싱 도구입니다. 웹 애플리케이션에서 데이터를 가져오는 단순한 상황을 간단하게 만들어서 **데이터 패칭과 캐싱 로직을 스스로 작성할 필요가 없도록 만들어졌습니다.**
 
 RTK Query는 **Redux Toolkit 패키지에 포함된 선택적인 추가기능이며** Redux Toolkit에 있는 다른 API와 같이 제공됩니다.
 
@@ -32,7 +32,7 @@ RTK Query는 Apollo Client, React Query, Urql, SWR과 같은 데이터 패칭을
 * 데이터 패칭과 캐싱 로직은 Redux Toolkit의 `createSlice`와 `createAsyncThunk` API 위에서 동작합니다.
 * Redux Toolkit은 UI 독립적이기 때문에 RTK Query의 기능들은 모든 UI 계층에서 사용할 수 있습니다.
 * API 엔드포인트는 인자로부터 쿼리 파리미터를 생성하고 캐싱을 위해 응답을 변환하는 방법을 포함해서 미리 정의됩니다.
-* RTK Query는 데이터 패칭 프로세스를 캡슐화해서 `data`와 `isLoading`필드를 컴포넌트에게 제공하고, 컴트가 mount, unmount시 캐시 된 데이터의 라이프타임을 관리하는 React hook을 제공합니다.
+* RTK Query는 데이터 패칭 프로세스를 캡슐화해서 `data`와 `isLoading`필드를 컴포넌트에게 제공하고, 컴포넌트가 mount, unmount시 캐시 된 데이터의 라이프타임을 관리하는 React hook을 제공합니다.
 * RTK Query는 초기 데이터를 패칭후 웹소켓 메시지를 통해 캐시 업데이트 스트리밍 같은 상황을 위한 "cache entry lifecycle"이라는 옵션을 제공합니다.
 * 우리는 OpenAPI와 GraphQL 스키마 API 슬라이스 코드 예시를 제공합니다.
 * 마지막으로, RTK Query는 완전히 타입스크립트로 작성되었으며, 완벽한 타입스크립트 경험을 제공합니다. 
@@ -46,8 +46,7 @@ RTK Query는 Redux Toolkit 패키지에 포함되어있습니다. 아래의 두 
 ```typescript
 import { createApi } from '@reduxjs/toolkit/query'
 
-/* React-specific entry point that automatically generates
-   hooks corresponding to the defined endpoints */
+// 리액트 엔트리 포인트를 명시하면 자동으로 정의된 엔드포인트의 훅을 생성합니다
 import { createApi } from '@reduxjs/toolkit/query/react'
 ```
 
@@ -69,7 +68,7 @@ RTK Query는 고정된 크기를 앱의 번들 사이즈에 추가합니다. RTK
 
 엔드포인트 정의를 추가하면 오직 `endpoint` 내의 코드의 크기를 추가하며, 일반적으로 몇 바이트에 불과합니다.
 
-RTK Query의 번들 사이즈는 직접 작성한 데이터 패칭 로직을 제거하면 대부분의 애플리케이션의 사이즈가 개선됩니다.
+RTK Query로 직접 작성한 데이터 패칭 로직을 제거하면 대부분의 애플리케이션의 사이즈가 개선됩니다.
 
 ## 기본 사용법 <a id="basic-usage"></a>
 
@@ -80,12 +79,11 @@ RTK Query는 Redux Toolkit 패키지에 포함되어있습니다. 아래의 두 
 ```typescript
 import { createApi } from '@reduxjs/toolkit/query'
 
-/* React-specific entry point that automatically generates
-   hooks corresponding to the defined endpoints */
+// 리액트 엔트리 포인트를 명시하면 자동으로 정의된 엔드포인트의 훅을 생성합니다
 import { createApi } from '@reduxjs/toolkit/query/react'
 ```
 
-React에서 전형적인 사용법은 `createApi`를 import하고 서버의 베이스 URL과 우리가 접근하고 싶은 엔드포인트들의 리스트들인 "API slice"를 정의하는 것에서부터 시작합니다.
+React에서 전형적인 사용법은 `createApi`를 import하고 서버의 베이스 URL과 우리가 접근하고 싶은 엔드포인트들의 리스트 "API slice"를 정의하는 것에서부터 시작합니다.
 
 ```typescript
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
