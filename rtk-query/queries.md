@@ -131,5 +131,26 @@ const api = createApi({
 {% endtab %}
 {% endtabs %}
 
+## 리액트 hooks과 함께 쿼리 사용하기
 
+리액트 hooks를 사용한다면 RTK Query는 추가적인 기능을 제공합니다. 가장 큰 이점은 hooks을 통해 백그라운드 패칭에 대한 불리언 값을 손쉽게 사용할 수 있습니다. 
+
+hooks는 서비스의 endpoint에서 자동으로 생성됩니다. getPost: builder.query\(\) 엔드포인트는 useGetPostQuery hook을 생성합니다. 
+
+### Hook의 종류
+
+다음과 같은 5개의 쿼리와 관련된 hooks이 있습니다:
+
+* useQuery
+  * useQuerySubscription과 useQueryState를 구성하는 기본 hook입니다. 엔드포인트에서 자동으로 데이터를 패치하고, 캐시된 데이터를 컴포넌트에 구독하며, 리덕스 스토어에서 요청 상태와 캐시된 데이터를 가져옵니다. 
+* useQuerySubscription
+  * refetch 함수를 반환하고 모든 hook 옵션을 받습니다. 엔드포인트에서 자동으로 데이터를 패치하고 컴포넌트에 캐시된 데이터를 구독합니다. 
+* useQueryState
+  * 쿼리 상태를 반환하고 skip과 selectFromResult를 받습니다. 리덕스 스토어에서는 요청 상태와 캐시된 데이터를 읽습니다. 
+* useLazyQuery
+  * fetch 함수, 쿼리 결과, 마지막 promise 정보가 포함된 튜플을 반환합니다. useQuery와 비슷하지만 언제 데이터 패칭을 하는지 수동으로 제어합니다. 
+* useLazyQuerySubscription
+  * fetch 함수와 마지막 promise 정보가 있는 튜플을 반환합니다. useQuerySubscription과 비슷하지만 언제 데이터 패칭을 하는지 수동으로 제어합니다. 
+
+예시에서는 useGetPostQuery같은 표준 useQuery 기반 hooks를 사용합니다. 그러나 다른 hooks들도 특정한 사례에 사용할 수 있습니다. 
 
