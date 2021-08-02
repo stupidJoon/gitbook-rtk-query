@@ -154,3 +154,20 @@ hooks는 서비스의 endpoint에서 자동으로 생성됩니다. getPost: buil
 
 예시에서는 useGetPostQuery같은 표준 useQuery 기반 hooks를 사용합니다. 그러나 다른 hooks들도 특정한 사례에 사용할 수 있습니다. 
 
+### Hook의 옵션
+
+쿼리 hook은 두개의 파라미터를 받습니다. \(queryArg?, queryOptions?\)
+
+queryArg 파라미터는 query 콜백에 전달되어 URL을 생성합니다. 
+
+{% hint style="warning" %}
+**주의**
+
+queryArg 파라미터는 내부적으로 useEffect의 의존성 배열로 전달됩니다. RTK Query는 파라미터에 대해 shallowEquals로 차이를 알아내지만 깊게 중첩된 값을 전달한 경우는 직접 파라미터를 안정적으로 유지해야 합니다\(e.g. with useMemo\).
+{% endhint %}
+
+queryOptions 객체는 데이터 패칭을 제어하는데 사용되는 추가적인 파라미터를 받습니다. 
+
+* skip - 해당 렌더에 대해 실행 중인 쿼리를 '스킵'할 수 있습니다. 기본값은 false입니다. 
+* pollingInterval - 
+
