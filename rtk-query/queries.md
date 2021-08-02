@@ -169,5 +169,19 @@ queryArg 파라미터는 내부적으로 useEffect의 의존성 배열로 전달
 queryOptions 객체는 데이터 패칭을 제어하는데 사용되는 추가적인 파라미터를 받습니다. 
 
 * skip - 해당 렌더에 대해 실행 중인 쿼리를 '스킵'할 수 있습니다. 기본값은 false입니다. 
-* pollingInterval - 
+* pollingInterval - 지정한 간격\(ms\)에 따라 자동으로 쿼리를 리패치할 수 있습니다. 기본값은 0\(비활성화\)입니다. 
+* selectFromResult - 훅에서 반환되는 결과값을 변경하고, 변경된 결과값을 렌더에 최적화할 수 있습니다. 
+* [refetchOnMountOrArgChange](https://redux-toolkit.js.org/rtk-query/api/createApi#refetchonmountorargchange) - 마운트시 항상 쿼리를 강제로 리패치할 수 있습니다\(true인 경우\). 동일한 캐시에 대한 마지막 쿼리 이후 충분한 시간이 경과한 경우 쿼리를 강제로 리패치할 수 있습니다\(number인 경우\). 기본값은 false입니다. 
+* refetchOnFocus - 브라우저 창에 포커스를 다시 가질때 쿼리를 강제로 리패치할 수 있습니다. 기본값은 false입니다. 
+* refetchOnReconnect - 네트워크가 다시 연결되었을때 쿼리를 강제로 리패치할 수 있습니다. 기본값은 false입니다. 
+
+{% hint style="info" %}
+**정보**
+
+모든 리패치와 관련된 옵션들은 createApi에서 설정된 값을 덮어씁니다. 
+{% endhint %}
+
+### 자주 사용되는 Hook 반환값
+
+
 
