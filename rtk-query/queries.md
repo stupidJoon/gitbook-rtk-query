@@ -194,7 +194,41 @@ queryOptions 객체는 데이터 패칭을 제어하는데 사용되는 추가�
 * isError - true일때 쿼리의 error 상태임을 나타냅니다. 
 * refetch - 쿼리를 강제 리패치 시키는 함수입니다. 
 
-대부분의 상황에서 UI를 렌더링할때 data를 읽고 
+대부분의 상황에서 UI를 렌더링하기위해 data와 isLoading 또는 isFetching이면 충분할 것 입니다. 
+
+### 쿼리 hook 사용 예시
+
+다음은 postDetail 컴포넌트 예시입니다: 
+
+{% code title="예시" %}
+```jsx
+export const PostDetail = ({ id }: { id: string }) => {
+  const { data: post, isFetching, isLoading } = useGetPostQuery(id, {
+    pollingInterval: 3000,
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  })
+
+  if (isLoading) return <div>Loading...</div>
+  if (!post) return <div>Missing post!</div>
+
+  return (
+    <div>
+      {post.name} {isFetching ? '...refetching' : ''}
+    </div>
+  )
+}
+```
+{% endcode %}
+
+이 컴포넌트의 방식에는 다음과 같은 몇 가지 특성이 있습니다. 
+
+* 초기 로드시 'Loading...'만 표시합니다. 
+  * 초기 로드는 쿼리가 pending상태이고 캐시에 데이터가 없는 상태입니다. 
+* polling 인터벌에 의해 다시 요청을 보낼때 post name에 '...refetching'을 추가합니다. 
+* 사용자가 PostDetail을 없앴다가 허용된 시간 내에 다시 생성하면 캐시된 결과를 즉시 제공하고 polling이 진행될 것 입니다. 
+
+### 쿼리 로딩 상태
 
 
 
