@@ -321,5 +321,23 @@ const { status, data, error, refetch } = dispatch(
 ```
 {% endhint %}
 
+## 예제: 캐싱 관찰하기
+
+이 예제에서는 요청 중복 제거 작업과 캐싱 동작을 설명합니다: 
+
+1. 첫번째 Pokemon 컴포넌트는 마운트후 바로 'bulbasaur'를 패치합니다. 
+2. 잠시 후, 또다른 'bulbasaur' Pokemon 컴포넌트가 렌더링됩니다. 
+   * 이 경우에는 'Loading...'이 표시되지 않고 새로운 네트워크 요청이 수행되지 않는 대신 캐시를 사용합니다. 
+3. 잠시 후, 'pikachu' Pokemon 컴포넌트가 추가되고, 새로운 요청이 발생합니다. 
+4. 특정 포켓몬의 'refetch'를 클릭하면 하나의 요청으로 모두가 업데이트됩니다. 
+
+{% hint style="info" %}
+**직접 해 보세요!**
+
+'Add bulbasaur'버튼을 클릭하면 요소중 하나에서 'refetch'버튼을 클릭하기 전까지 위에서 설명한 것과 동일한 동작을 볼 수 있습니다. 
+{% endhint %}
+
+{% embed url="https://codesandbox.io/embed/github/reduxjs/redux-toolkit/tree/master/examples/query/react/deduping-queries?fontsize=14&hidenavigation=1&theme=dark" %}
+
 
 
