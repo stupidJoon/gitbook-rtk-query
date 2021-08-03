@@ -230,5 +230,96 @@ export const PostDetail = ({ id }: { id: string }) => {
 
 ### 쿼리 로딩 상태
 
+createApi에서 자동 생성된 리액트 hooks는 주어진 쿼리에 대한 현재 상태를 제공합니다. \(Derived booleans are preferred for the generated React hooks as opposed to a status flag, as the derived booleans are able to provide a greater amount of detail which would not be possible with a single status flag, as multiple statuses may be true at a given time \(such as isFetching and isSuccess\).\)???
+
+쿼리 엔드포인트에서 RTK Query는 좀 더 유연하게 정보들을 제공하기 위해서 isLoading과 isFetching을 구분합니다. 
+
+* isLoading은 처음으로 실행중인 쿼리를 의미합니다. 이 시간동안에는 데이터를 사용할 수 없습니다. 
+* isFetching은 엔드포인트와 쿼리 매개변수로 실행중인 쿼리를 의미하지만, 반드시 처음으로 실행중인 쿼리는 아닙니다. 이전 요청의 쿼리와 매개변수로 데이터를 사용할 수 있습니다. 
+
+이러한 구분을 통해서 UI에 더 많은 제어권을 가질 수 있습니다. 예를 들어 isLoading은 처음 로딩하는 동안에 스켈레톤을 보여줄 수 있고 isFetching은 페이지를 변경하거나 데이터를 무효화해서 리패칭할때 이전 데이터를 회색으로 보여줄 수 있습니다. 
+
+{% code title="쿼리 로딩 상태일때 UI 관리하기" %}
+```jsx
+import { Skeleton } from './Skeleton'
+import { useGetPostsQuery } from './api'
+
+function App() {
+  const { data = [], isLoading, isFetching, isError } = useGetPostsQuery()
+
+  if (isError) return <div>An error has occurred!</div>
+
+  if (isLoading) return <Skeleton />
+
+  return (
+    <div className={isFetching ? 'posts--disabled' : ''}>
+      {data.map((post) => (
+        <Post
+          key={post.id}
+          id={post.id}
+          name={post.name}
+          disabled={isFetching}
+        />
+      ))}
+    </div>
+  )
+```
+{% endcode %}
+
+### 쿼리 캐시 keys
+
+쿼리를 수행할 때 RTK Query는 요청 파라미터를 자동으로 직렬화하고 요청에 대한 queryCacheKey를 내부적으로 생성합니다. 이후 동일한 쿼리의 모든 요청들은 원본 데이터에 의해서 중복 제거되고 컴포넌트에서 패치가 일어났을때 업데이트를 공유합니다. 
+
+### 쿼리 result에서 필요한 데이터 가져오기
+
+부모 컴포넌트가 쿼리를 구독하고있고 자식 컴포넌트가 쿼리에서 데이터를 가져오는 경우가 있을 수 있습니다. 대부분의 경우에서는 이미 결과를 가지고 있을때 getItemById 형식의 추가적인 요청을 하고싶지 않을 것 입니다. 
+
+selectFromResult를 사용하면 쿼리 결과에서 특정한 부분을 선택해서 가져올 수 있습니다. 이 기능을 사용하면 선택된 항목의 기본 데이터가 변경되지 않는 한 컴포넌트는 리렌더링이 이루어지지 않을 것 입니다. 선택된 항목이 원본 항목보다 더 큰 경우에는 같은 데이터를 가지도록 무시합니다. 
+
+{% code title="selectFromResult를 사용해서 하나의 값을 가져오기" %}
+```jsx
+function PostsList() {
+  const { data: posts } = api.useGetPostsQuery()
+
+  return (
+    <ul>
+      {posts?.data?.map((post) => (
+        <PostById key={post.id} id={post.id} />
+      ))}
+    </ul>
+  )
+}
+
+function PostById({ id }: { id: number }) {
+  // Will select the post with the given id, and will only rerender if the given posts data changes
+  const { post } = api.useGetPostsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      post: data?.find((post) => post.id === id),
+    }),
+  })
+
+  return <li>{post?.name}</li>
+}
+```
+{% endcode %}
+
+### 불필요한 요청 피하기
+
+기본값으로는, 이미 존재하는 쿼리를 새로운 컴포넌트에서 추가하면 요청이 수행되지 않습니다. 
+
+경우에 따라서는 이 행동을 스킵하고 강제로 리패치하는 상황이 있을 수 있습니다. 이런 경우일때는 hook에서 반환된 refetch 함수를 실행하면 됩니다. 
+
+{% hint style="info" %}
+**정보**
+
+리액트 hooks를 사용하고 있지 않다면, refetch를 다음과 같은 방식으로 접근할 수 있습니다:
+
+```javascript
+const { status, data, error, refetch } = dispatch(
+  pokemonApi.endpoints.getPokemon.initiate('bulbasaur')
+)
+```
+{% endhint %}
+
 
 
