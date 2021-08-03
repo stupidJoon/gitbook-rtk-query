@@ -17,9 +17,9 @@
 
 RTK Query는 고려할 가치가 있는 몇몇의 특별한 API 디자인 측면들과 기능들을 가지고 있습니다.
 
-* React Query와 SWR에서, 보통 스스로 hooks를 정의하고 어디서나 hooks를 사용할 수 있습니다. RTK Query에서는 하나의 "API slice"와 여러개의 엔드포인트들을 한곳에서 관리해야합니다. 이를 통해 자동으로 쿼리 무효화/리패칭 작업들이 긴밀하게 통합될 수 있습니다. 
+* React Query와 SWR에서, 보통 여러곳에서 hooks를 정의하고 어디서나 hooks를 사용할 수 있습니다. RTK Query에서는 하나의 "API slice"와 여러개의 엔드포인트들을 한곳에서 관리해야합니다. 이를 통해 자동으로 쿼리 무효화/리패칭 작업들이 긴밀하게 통합될 수 있습니다. 
 * RTK Query는 보통 리덕스 액션처럼 요청이 처리되기때문에 모든 액션들은 Redux DevTools에서 볼 수 있습니다. 추가적으로 모든 요청들은 Redux 리듀서에서 접근가능해 필요하다면 글로벌 상태를 손쉽게 업데이트할 수 있습니다 \([예시](https://github.com/reduxjs/redux-toolkit/issues/958#issuecomment-809570419)\). [엔드포인트 matcher 기능](https://redux-toolkit.js.org/rtk-query/api/created-api/endpoints#matchers)을 통해 리듀서에서 캐시와 관련된 작업을 할 수 있습니다. 
-* Redux처럼 RTK Query의 주요한 기능은 UI독립적이며 다른 UI 레이어에서도 사용할 수 있습니다. 
+* Redux처럼 RTK Query의 주요한 기능은 UI 독립적이며 다른 UI 레이어에서도 사용할 수 있습니다. 
 * 미들웨어에서 엔티티 무효화나 이미 존재하는 쿼리 데이터 패치작업\(`util.updateQueryData`를 통해\)을 손쉽게 할 수 있습니다. 
 * RTK Query는 웹소켓으로 부터 받은 초기 패치 데이터 업데이트같은 [스트리밍 캐시 업데이트](https://redux-toolkit.js.org/rtk-query/usage/streaming-updates)를 지원하고 [업데이트 최적화](https://redux-toolkit.js.org/rtk-query/usage/optimistic-updates)도 기본적으로 지원합니다. 
 * RTK Query는 작고 유연한 fetch 래퍼인 [`fetchBaseQuery`](https://redux-toolkit.js.org/rtk-query/api/fetchBaseQuery)를 제공합니다. 또한 `axios`, `redaxios` 같은 [다른 클라이언트와 바꾸기도](https://redux-toolkit.js.org/rtk-query/usage/customizing-queries) 매우 쉽습니다. 
