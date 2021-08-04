@@ -111,3 +111,9 @@ const api = createApi({
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+**정보**
+
+onQueryStarted 메소드는 optimistic updates에 사용될 수 있습니다. 
+{% endhint %}
+
