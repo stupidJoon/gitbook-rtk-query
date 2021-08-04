@@ -9,4 +9,5 @@
 ## RTK Query 사용하기
 
 * [쿼리](rtk-query/queries.md)
+* [뮤테이션](rtk-query/undefined.md)
 
