@@ -334,7 +334,7 @@ const { status, data, error, refetch } = dispatch(
 {% hint style="info" %}
 **직접 해 보세요!**
 
-'Add bulbasaur'버튼을 클릭하면 요소중 하나에서 'refetch'버튼을 클릭하기 전까지 위에서 설명한 것과 동일한 동작을 볼 수 있습니다. 
+'Add bulbasaur' 버튼을 클릭하면 요소중 하나에서 'refetch' 버튼을 클릭하기 전까지 위에서 설명한 것과 동일한 동작을 볼 수 있습니다. 
 {% endhint %}
 
 {% embed url="https://codesandbox.io/embed/github/reduxjs/redux-toolkit/tree/master/examples/query/react/deduping-queries?fontsize=14&hidenavigation=1&theme=dark" %}
