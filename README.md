@@ -11,7 +11,7 @@
 * [x] 다른 라이브러리들과 비교
 * [ ] 타입스크립트와 사용하기\(번역이 어려워서 나중에 KEEP\)
 * [ ] Using RTK Query
-  * [ ] Queries
+  * [x] 쿼리
   * [ ] Mutations
   * [ ] Cache Behavior
   * [ ] Automated Re-fetching
