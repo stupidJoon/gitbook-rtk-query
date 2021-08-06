@@ -39,12 +39,12 @@ const api = createApi({
   tagTypes: ['Post'],
   endpoints: (build) => ({
     getPost: build.query<Post, number>({
-      // note: an optional `queryFn` may be used in place of `query`
+      // 노트: `queryFn`을 `query`자리에 사용할 수도 있습니다. 
       query: (id) => ({ url: `post/${id}` }),
-      // Pick out data and prevent nested properties in a hook or selector
+      // data를 가져와서 hook이나 selector에서 중첩된 프로퍼티를 방지합니다. 
       transformResponse: (response: { data: Post }) => response.data,
       providesTags: (result, error, id) => [{ type: 'Post', id }],
-      // The 2nd parameter is the destructured `QueryLifecycleApi`
+      // 2번째 파라미터는 구조분해된 `QueryLifecycleApi`입니다. 
       async onQueryStarted(
         arg,
         {
@@ -57,7 +57,7 @@ const api = createApi({
           updateCachedData,
         }
       ) {},
-      // The 2nd parameter is the destructured `QueryCacheLifecycleApi`
+      // 2번째 파라미터는 구조분해된 `QueryCacheLifecycleApi`입니다. 
       async onCacheEntryAdded(
         arg,
         {
@@ -291,7 +291,7 @@ function PostsList() {
 }
 
 function PostById({ id }: { id: number }) {
-  // Will select the post with the given id, and will only rerender if the given posts data changes
+  // 주어진 id의 post만 가져오고, 주어진 post가 변할때만 렌더링됩니다. 
   const { post } = api.useGetPostsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       post: data?.find((post) => post.id === id),
