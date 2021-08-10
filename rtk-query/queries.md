@@ -230,7 +230,7 @@ export const PostDetail = ({ id }: { id: string }) => {
 
 ### 쿼리 로딩 상태
 
-`createApi`에서 자동 생성된 리액트 hooks는 주어진 쿼리에 대한 현재 상태를 제공합니다. \(Derived booleans are preferred for the generated React hooks as opposed to a status flag, as the derived booleans are able to provide a greater amount of detail which would not be possible with a single status flag, as multiple statuses may be true at a given time \(such as isFetching and isSuccess\).\)???
+`createApi`에서 자동 생성된 리액트 hooks는 주어진 쿼리에 대한 현재 상태를 제공합니다. hook에서 하나의 상태 플래그보다 더 많은 상태 정보를 알 수 있으므로 hook을 선호합니다. \(isFetching과 isSuccess같은\)
 
 쿼리 엔드포인트에서 RTK Query는 좀 더 유연하게 정보들을 제공하기 위해서 `isLoading`과 `isFetching`을 구분합니다. 
 
